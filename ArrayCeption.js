@@ -38,7 +38,7 @@ function arrayception(array) {
       }
     });
     // reset counter to 1
-    levelCounter = 1;
+      levelCounter = 1;
   }
   inner(array);
   //return max counter
@@ -68,4 +68,3 @@ console.log('w', w);
 console.log('x', x);
 console.log("y", y);
 console.log('z', z);
-
