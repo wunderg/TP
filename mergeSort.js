@@ -14,12 +14,12 @@
      [1,2,3,4,4,7,9]
 */
 
-//1. loop over each item
-	// 1a. make every item a sub array -> [[4], [3]]
-//2. compare first item and second item
-	// 2a. sort and combine first and second into one item -> [[4, 3]]
-//3. repeat the merge step again
-	// 3a. 
+// loop over each item
+	// make every item a sub array -> [[4], [3]]
+// compare first item and second item
+	// sort and combine first and second into one item -> [[4, 3]]
+// repeat the merge step again
+	// 
 
 
 
@@ -33,3 +33,6 @@
 //
      // [[4],[7],[4],[3],[9],[1],[2]] -> [[4,7],[3,4],[1,9],[2]]
 //
+
+
+
