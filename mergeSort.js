@@ -144,4 +144,3 @@ function mergeSort(list) {
 
 var x = [8,3,6,4,9,1,2,5,7];
 console.log(mergeSort(x));
-
