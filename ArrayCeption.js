@@ -59,13 +59,13 @@ function arrayception(array) {
       //set maxDepth greatest from levelDepth or maxDepth
     //decrement levelDepth
 
-  //return maxDepth;
+  //return maxDepth; 
 
 
 function arrayception(array, levelDepth, maxDepth) {
   levelDepth = levelDepth || 1;
-  maxDepth = maxDepth || 0;
-
+   maxDepth = maxDepth || 0  
+ 
   array.forEach(function(elem) {
     if (Array.isArray(elem)) {
       levelDepth += 1;
