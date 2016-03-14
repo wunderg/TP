@@ -18,7 +18,7 @@ target:
 array:
 [ 11, 13, 14, 15, 16, 18, 19, 20 ] => length 9/2   => 4.5  => Math.floor()  => 4
 target:
-20	
+20
 */
 // 1  => 15  => index 4  => 17 === 15 ? return index : splitAgain
 //
@@ -29,17 +29,20 @@ target:
 // 7 length -1 - 7 / 2 mathFloor(1) = 7+1 8 return -1
 //
 // var binarySearch = function(array, target, index) {
-//   
-// } 
+//
+// }
 //
 // [ 11, 12, 13, 14, 15, 16 ] 16
 /*----------  Algo  ----------*/
-// create function called binarySearch, takes in array(sorted ints) and target(int) // 
+// create function called binarySearch, takes in array(sorted ints) and target(int) //
 //
-function binarySearch(array, target, index) {
+function binarySearch(array, target, index, last) {
+	last = last || array.length - 1;
+
 	if (index === undefined) {
 		index = Math.floor(array.length / 2);
 	}
+	// if target found
 	if (array[index] === target) {
 		return index;
 	}
@@ -50,41 +53,48 @@ function binarySearch(array, target, index) {
 	}
 	if (target > array[index] && target < array[index + 1] || index === array.length - 1) {
 		return -1;
-	} 
+	}
 
-	if (target < array[index]) { 
+	if (target < array[index]) {
     console.log(index);
-    // move left 
-		return binarySearch(array, target, Math.ceil(index / 2));
+    // move left
+    // last = index;
+		return binarySearch(array, target, Math.floor(index / 2), last);
 	} else {
     console.log(index);
-    // move right
-		return binarySearch(array, target, Math.floor((array.length - index) / 2) + index);
-	}
-   
+    // last = index;
+
+    return binarySearch(array, target, Math.floor((last - index) / 2 + index), last);
+  }
 }
+
+// index = 8 | lastIndex / 2 .. index/2 .. index = 6
+// lastIndex = 8 | lasstIndex = 4 - lastIndex = 6 - 2
+
 
 var x = [];
 for(var i = 0; i <= 15; i++) {
  x.push(i);
 }
 // var x = [11, 12, 13, 14, 15]
-// var x = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
+//                    x        x
+// var x = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]; > 16
 //           0  1  2  3  4  5  6  7  8   9  10  11  12, 13, 14
-
-// for(var i = 4; i <= 5; i++) {
-console.log(binarySearch(x, 0));
+// 2 +
+// for(var i = 0; i <= 5; i++) {
+// console.log(x.length/2)
+console.log(binarySearch(x, 9));
 // }
 
 
 //calculate middle value which is current index / 2 or 13/
 //check if middle value is target /false 13 != 16/
-//  return index of that value 
+//  return index of that value
 
 // if target is smaller then array[index] && bigger then array[index -1] /false /
 // if target is bigger then array[index] && smaller then array[index +1] /false /
 //
-//check if index is equal to length -1 or index = 0 /false/ 
+//check if index is equal to length -1 or index = 0 /false/
   // return -1
 //
 //if target < array[index]  16 < 13
@@ -101,9 +111,8 @@ console.log(binarySearch(x, 0));
 // Math.ceil((9 - 4) / 2) + 4 => 7
 // Math.ceil((9 - 6) / 2) + 6 => 9
 //
-//  
+//
 //          x
 // [1,2,3,4,5,6,7,8,9,10]
 //  0 1 2 3 4 5 6 7 8 9
 //
-

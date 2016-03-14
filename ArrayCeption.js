@@ -1,6 +1,6 @@
 /*
  * Arrayception
-Given an array of arbitrarily nested arrays, return n, where n is the deepest 
+Given an array of arbitrarily nested arrays, return n, where n is the deepest
 level that contains a non-array value.
 
 Examples
@@ -17,7 +17,7 @@ array:
 [ [ [ ] ] ] => 0
 */
 
-/* version with inner function 
+/* version with inner function
 function arrayception(array) {
   // declare a max counter for levels
   var maxCounter = 0;
@@ -59,13 +59,13 @@ function arrayception(array) {
       //set maxDepth greatest from levelDepth or maxDepth
     //decrement levelDepth
 
-  //return maxDepth; 
+  //return maxDepth;
 
 
 function arrayception(array, levelDepth, maxDepth) {
   levelDepth = levelDepth || 1;
-   maxDepth = maxDepth || 0  
- 
+   maxDepth = maxDepth || 0;
+
   array.forEach(function(elem) {
     if (Array.isArray(elem)) {
       levelDepth += 1;
@@ -81,18 +81,18 @@ function arrayception(array, levelDepth, maxDepth) {
 // 1.
 // levelDepth = 1
 // maxDepth = 0;
-// 2.                                    2.1 
+// 2.                                    2.1
 // levelDepth = 2                            levelDepth = 2
-// maxDepth = result of arrayception =>      maxDepth = 0; 
+// maxDepth = result of arrayception =>      maxDepth = 0;
 // levelDepth = 1;
 //
 // 3.               3.1    3.2           3.3 item is not array
 //   levelDepth = 2 same array is emmpty  levelDepth = 3
 // max depth = 0 ; same array is empty     maxDepth = 3 else statemment
-//   
+//
 //
 
-console.log('b', arrayception([[],[[],[],[0,[[]]],[]],[]])) // =>3 
+console.log('b', arrayception([[],[[],[],[0,[[]]],[]],[]])) // =>3
 
 
 var w = arrayception([ 10, 20, 30, 40 ]);
@@ -113,7 +113,7 @@ var z = arrayception([
     []
   ]
 ]);
-console.log('b', arrayception([[],[[],[],[0,[[]]],[]],[]])) // =>3 
+console.log('b', arrayception([[],[[],[],[0,[[]]],[]],[]])) // =>3
 console.log('w', w);
 console.log('x', x);
 console.log("y", y);
