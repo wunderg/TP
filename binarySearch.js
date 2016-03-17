@@ -36,46 +36,54 @@ target:
 /*----------  Algo  ----------*/
 // create function called binarySearch, takes in array(sorted ints) and target(int) //
 //
-function binarySearch(array, target, index, prev) {
+function binarySearch(array, target, low, high) {
 
-  if (index === undefined) {
-    index = Math.floor(array.length / 2);
-  }
-  // if target found
-  if (array[index] === target) {
-    return index;
+  high = high || array.length;
+  low = low || 0;
+  var mid = Math.floor((high - low) / 2) + low;
+  var trueIndex = Math.ceil((high - low) / 2) + low;
+  console.log('low: ', low, 'high:', high, 'target:', target, 'mid:', mid, 'actual:', array[mid]);
+
+  if (array[mid] === target) {
+    return mid;
   }
 
-  // check if out of bounds
-  if (target < array[index] && target > array[index - 1] || index === 0) {
+  if (trueIndex === high || low === high) {
     return -1;
   }
-  if (target > array[index] && target < array[index + 1] || index === array.length - 1) {
-    return -1;
-  }
 
-  if (target < array[index]) {
-    // move left
-    console.log('index: ', index, 'prev: ', prev);
-    prev =  Math.floor(index / 2);
-    index = Math.floor(index - prev);
-    return binarySearch(array, target, index, prev);
+  if (array[mid] > target) {
+    return binarySearch(array, target, low, mid);
   } else {
-    //move right
-    console.log('index: ', index, 'prev: ', prev);
-    prev = Math.floor(index / 2);
-    index = Math.floor(index + prev);
-    return binarySearch(array, target, index, prev);
+    return binarySearch(array, target, mid, high);
   }
 }
+
+// [1,2,3,4,5]
+//
+// 1 mid = 2, low = 0, high = 5
+// 2 mid = 3 , low = 2, high = 5
+// 3 mid = 4 , low = 3. high = 5
+// 4 mid = 4 , low = 4, high = 5
+// 5 mid =   , low = 4,  high = 5
+
+
+
+
+
+
+
+
+
+
 
 // index = 8 | lastIndex / 2 .. index/2 .. index = 6
 // lastIndex = 8 | lasstIndex = 4 - lastIndex = 6 - 2
 
 
 var x = [];
-for(var i = 0; i <= 15; i++) {
- x.push(i);
+for (var i = 300; i <= 10000000; i+=3) {
+  x.push(i);
 }
 // var x = [11, 12, 13, 14, 15]
 // 1 index = 8 | prev = 0 || 2. index = 12 prev = 4 || 3 index 
@@ -83,10 +91,7 @@ for(var i = 0; i <= 15; i++) {
 // var x = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]; > 16
 //           0  1  2  3  4  5  6  7  8   9  10  11  12, 13, 14
 // 2 +
-// for(var i = 0; i <= 5; i++) {
-// console.log(x.length/2)
-console.log(binarySearch(x, 14))
-// }
+  console.log(binarySearch(x, 953925))
 
 
 //calculate middle value which is current index / 2 or 13/
@@ -97,7 +102,7 @@ console.log(binarySearch(x, 14))
 // if target is bigger then array[index] && smaller then array[index +1] /false /
 //
 //check if index is equal to length -1 or index = 0 /false/
-  // return -1
+// return -1
 //
 //if target < array[index]  16 < 13
 // go left  new binarySearch(array, target, index Math.floor( index / 2))
@@ -118,3 +123,44 @@ console.log(binarySearch(x, 14))
 // [1,2,3,4,5,6,7,8,9,10]
 //  0 1 2 3 4 5 6 7 8 9
 //
+
+
+
+
+/*
+ * Given a sorted array, find the index of an element
+ * using a binary search algorithm.
+ *
+ * Example usage:
+ *
+ * var index = binarySearch([1, 2, 3, 4, 5], 4);
+ * console.log(index); // [3]
+ */
+
+// var binarySearch = function (array, target) {
+//   /* START SOLUTION */
+//   // create function called sub, takes low and high index
+//   var sub = function (low, high) {
+//     // If we are done, we haven't found the target.
+//     if (high === low) { return null; }
+
+//     // Find the middle point.
+//     var mid = Math.floor((high - low) / 2) + low;
+
+//     // See if we found the target.
+//     if (array[mid] === target) {
+//       return mid;
+
+//     // If not, decide which half to recurse on.
+//     } else if (array[mid] > target) {
+//       return sub(low, mid);
+//     } else {
+//       return sub(mid, high);
+//     }
+//   };
+
+//   // Do the recursion.
+//   return sub(0, array.length);
+//   /* END SOLUTION */
+// };
+
