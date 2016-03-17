@@ -42,7 +42,7 @@ function binarySearch(array, target, low, high) {
   low = low || 0;
   var mid = Math.floor((high - low) / 2) + low;
   var trueIndex = Math.ceil((high - low) / 2) + low;
-  console.log('low: ', low, 'high:', high, 'target:', target, 'mid:', mid, 'actual:', array[mid]);
+  console.log('low: ', low, 'high:', high, 'target:', target, 'mid:', mid);
 
   if (array[mid] === target) {
     return mid;
@@ -67,8 +67,29 @@ function binarySearch(array, target, low, high) {
 // 4 mid = 4 , low = 4, high = 5
 // 5 mid =   , low = 4,  high = 5
 
+/*========================================
+=            Binary Search V2            =
+========================================*/
+function findIndex(array, target) {
+  return binarySearch(array, target, 0, array.length - 1);
+};
+
+function binarySearch(array, target, low, high) {
+  if (low > high) { return -1; } 
+
+  var mid = Math.floor((low + high) / 2);
+  var value = array[mid];
+
+  if (value > target) { return binarySearch(array, target, low, mid-1); }
+  if (value < target) { return binarySearch(array, target, mid+1, high); }
+  return mid; 
+}
+
+/*=====  End of Binary Search V2  ======*/
 
 
+
+console.log(findIndex([1, 4, 6, 7, 12, 13, 15, 18, 19, 20, 22, 24], 4));
 
 
 
@@ -82,7 +103,7 @@ function binarySearch(array, target, low, high) {
 
 
 var x = [];
-for (var i = 300; i <= 10000000; i+=3) {
+for (var i = 1; i <= 15; i++) {
   x.push(i);
 }
 // var x = [11, 12, 13, 14, 15]
@@ -91,7 +112,9 @@ for (var i = 300; i <= 10000000; i+=3) {
 // var x = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]; > 16
 //           0  1  2  3  4  5  6  7  8   9  10  11  12, 13, 14
 // 2 +
-  console.log(binarySearch(x, 953925))
+for (var i = 0; i <= 16; i++) {
+  console.log(binarySearch(x, i))
+}
 
 
 //calculate middle value which is current index / 2 or 13/
