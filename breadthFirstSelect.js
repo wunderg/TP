@@ -9,6 +9,10 @@ var Queue = function() {
         return storage.shift();
     };
 
+    this.size = function() {
+        return storage.length;
+    }
+
 }
 
 var Tree = function(value) {
@@ -17,8 +21,30 @@ var Tree = function(value) {
 };
 
 Tree.prototype.BFSelect = function(filter) {
-  var queue = new Queue();
+    var queue = new Queue();
+    var result = [];
+    this.depth = 0;
 
+    function inner(node) {
+        if (filter(node.value, node.depth)) {
+            result.push(node.value);
+        }
+
+        if (node.children) {
+            node.children.forEach(item => {
+                item.depth = node.depth + 1;
+                queue.enqueue(item)
+            });
+        }
+
+        if (queue.size()) {
+            inner(queue.dequeue());
+        }
+    }
+
+    inner(this);
+
+    return result;
 };
 
 
@@ -73,3 +99,28 @@ Tree.prototype.removeChild = function(child) {
 };
 
 module.exports = Tree;
+
+
+
+function fib(num) {
+  if (num < 1) {
+    return 1
+  }
+  return fib(num -1) + fib(num - 2);
+}
+
+10
+function fib2(num) {
+  if (num < 1) {
+    return 1;
+  }
+  var prev = 0;
+  var curr = 1
+  var temp;
+  for (var i = 1 ; i < num; i++) {
+    temp = curr
+    curr = prev + curr;
+    prev = temp;
+  }
+  return curr;
+}

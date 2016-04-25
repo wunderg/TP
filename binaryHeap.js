@@ -73,4 +73,3 @@ module.exports = BinaryHeap;
 parentIndex = Math.floor( (index - 1) / 2 )
 childrenIndices = [index * 2 + 1, index * 2 + 2]
 */
-
