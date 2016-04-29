@@ -114,13 +114,13 @@ function fib2(num) {
   if (num < 1) {
     return 1;
   }
-  var prev = 0;
-  var curr = 1
-  var temp;
-  for (var i = 1 ; i < num; i++) {
-    temp = curr
-    curr = prev + curr;
-    prev = temp;
-  }
-  return curr;
+  //create temp var
+  //create curr varibale = 1
+  //create prev varibale = 0
+  //iterate till i = num
+  //use temp to hold curr
+  //curr will be result of prev and curr
+  //prev will equal to prev currrent
+  //
+  //return current
 }

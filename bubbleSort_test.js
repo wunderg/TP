@@ -5,7 +5,7 @@ var bubbleSort = require('./bubbleSort')
 // sort this array
 //
 describe('isSubsetOf', function(){
-
+  
   it(': sort it', function() {
     Array.prototype.sort = null;
     var input = [20, -10, -10, 2, 4, 299];
@@ -13,7 +13,7 @@ describe('isSubsetOf', function(){
     var equals = bubbleSort(input).toString() === expected.toString();
     equals.should.equal(equals, true, 'output should match expected')
   });
-
+      
 //
 // and this array
 //
@@ -31,7 +31,7 @@ describe('isSubsetOf', function(){
 
 //
 // also this array, thank you
-//
+//    
   it(': sort it', function() {
     Array.prototype.sort = null;
     var input = [18, 30, 25, 28, 24, 19, 31, 20, 35, 24, 36, 26, 30, 29, 40, 36];
@@ -40,5 +40,5 @@ describe('isSubsetOf', function(){
     equals.should.equal(equals, true, 'output should match expected')
   });
 
-})
 
+})
